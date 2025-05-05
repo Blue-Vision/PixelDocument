@@ -1,0 +1,93 @@
+# Shape Matching
+
+Công cụ dùng để tìm kiếm hoặc nhận diện đối tượng cụ thể trong một hình ảnh lớn hơn dựa theo tính chất hình dạng/biên dạng của đối tượng.
+Shape Matching hoạt động bằng cách so sánh một biên dạng mẫu chuẩn (template) với các vùng khác nhau trong hình ảnh kiểm tra để xác định vị trí hoặc sự xuất hiện của mẫu đó.
+
+**Ứng dụng phổ biến của Shape Matching:**
+
+- :white_check_mark: Kiểm tra xem đối tượng có trong ảnh hay không.
+- :white_check_mark: Định vị đối tượng, tính toán ra độ lệch so với mẫu chuẩn để từ đó máy móc như robot có thể định vị lại đúng vị trí.
+- :white_check_mark: Định vị đối tượng là tiền đề cho các công cụ xử lý ảnh khác tìm đúng vùng ảnh cần xử lý.
+
+[Tham khảo công cụ định vị Pattern Matching](/docs/modules/Pattern_Matching)
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/shape_matching/shape_matching.mp4' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+
+## Thông số cài đặt
+### Cài đặt ảnh mẫu
+
+<Image width='680' src="/images/shape_matching/1.PNG" />
+
+Hình ảnh vật thể được trích xuất biên dạng/cạnh chính là đường viền màu vàng để lưu lại làm mẫu. Biên dạng của vật thể trong xử lý ảnh được hiểu là vùng ranh giới có sự thay đổi lớn về cường độ (intensity), 
+các điểm ảnh lân cận tại ranh giới có sự khác biệt rõ rệt, sự khác biệt này được gọi là độ tương phản.
+
+- **Độ tương phản tối thiểu**: giá trị chênh lệch nhỏ nhất để đánh giá đó có thể là đường cạnh.
+- **Độ tương phản**: giá trị tương phản tin cậy, chắc chắn là cạnh.
+
+<Image src="/images/shape_matching/2.PNG" />
+
+Trên đây là ví dụ với vật thể có độ tương phản thấp, màu sắc của vật thể không khác biệt nhiều so với màu nền. Khi cài đặt **Độ tương phản tối thiểu** là 10 và **Độ tương phản** là 25 thì có rất nhiều cạnh bị thiếu. Trong trường hợp này cần giảm hai thông số xuống thấp hơn, với **Độ tương phản tối thiểu** là 8 và **Độ tương phản** là 15 thì toàn bộ cạnh đã bắt được.
+
+:::tip
+Trong trường hợp cạnh không bắt được, để điều chỉnh tham số một cách nhanh chóng có thể giảm **Độ tương phản tối thiểu** xuống rất thấp trước, sau đó điều chỉnh **Độ tương phản** ở mức gấp 2 lần **Độ tương phản tối thiểu**. Tiếp theo điều chỉnh tăng dần tới mức phù hợp mà cạnh vẫn có thể bắt được. Chú ý rằng có thể thông số phù hợp với ảnh này nhưng trong tương lai ảnh có thể có độ tương phản thấp hoặc cao hơn. Người dùng cần thực nghiệm nhiều để chọn được tham số tốt nhất. 
+:::
+
+<Image width='680' src="/images/shape_matching/4.PNG" />
+
+-   **Mức độ tìm kiếm tối đa**: thông số này được hiểu là ảnh sẽ được thu nhỏ tới mức độ nào để tìm kiếm. `Mức độ càng cao thì phần mềm sẽ tìm kiếm càng nhanh nhưng độ chính xác tìm kiếm có thể bị giảm xuống`. Để chọn được mức độ tìm kiếm phù hợp nhất giữa độ chính xác và thời gian tìm kiếm, có thể thử điều chỉnh tăng dần thông số tới khi nào hình ảnh mẫu trông không còn rõ ràng. Ví dụ dưới đây với thông số bằng 5 cho thấy ảnh mẫu đã quá mờ, chi tiết không còn rõ ràng, khi tìm kiếm sẽ cho kết quả không tốt, thông số bằng 4 hình ảnh rõ ràng hơn cho kết quả có thể chấp nhận được.
+
+<Image src="/images/shape_matching/5.PNG" />
+
+-   **Tọa độ điểm đánh dấu (2 mũi tên đỏ)**: đây là tọa độ được đánh dấu trên ảnh mẫu, tọa độ này sẽ luôn được trả về cùng tọa độ vật mẫu được tìm thấy. Ví dụ như điều chỉnh điểm đánh dấu vào vị trí như hình dưới, mỗi lần chạy module kết quả điểm đánh dấu sẽ luôn được trả về, module đằng sau có thể tham chiếu tới điểm này để đo đạc khoảng cách tới một điểm nào đó. Mặc định điểm này sẽ ở tâm ảnh mẫu.
+
+<Image width='680' src="/images/shape_matching/6.PNG" />
+
+-   **Tỷ lệ**: tỷ lệ tìm kiếm, phần mềm cho phép cài đặt tìm kiếm vật thể nhỏ hơn hoặc lớn hơn với với vật mẫu, miễn là vật thể có biên dạng tương tự như vật mẫu.
+
+### Cài đặt tìm kiếm
+
+<Image src="/images/shape_matching/3.PNG" />
+
+-   **Số lượng mẫu cần tìm**: số lượng vật thể cần tìm trong ảnh.
+-   **Góc xoay**: góc mà phần mềm sẽ tìm kiếm vật thể. Nếu vật thể không nằm trong khoảng góc này sẽ không tìm thấy. Khóc thay đổi từ -180 tới 180 độ. `Chú ý nếu góc xoay càng lớn thì thời gian tìm kiếm càng lâu`.
+-   **Tỷ lệ**: tỷ lệ ratio tìm kiếm, phần mềm cho phép cài đặt tìm kiếm vật thể nhỏ hơn hoặc lớn hơn với với vật mẫu, miễn là vật thể có biên dạng tương tự như vật mẫu. `Chú ý nếu dải tỷ lệ càng lớn thì thời gian tìm kiếm càng lâu`. Mặc định dải tỷ lệ bằng 1.
+
+:::note
+Trong phần cài đặt ảnh mẫu cần phải cài đặt **Tỷ lệ** tương ứng.
+:::
+
+-   **Chế độ tìm kiếm**: có 2 chế độ là nhanh và chính xác cao, đúng như tên gọi với chế độ nhanh phần mềm sẽ tìm kiếm đạt tốc độ nhanh nhất, còn chế độ độ chính xác cao sẽ cho kết quả vị trí vật mẫu chính xác nhất,tới độ chính xác nhỏ hơn 1 pixel (sub-pixle) nhưng tốc độ sẽ chậm hơn.
+
+<details>
+  <summary>Cài đặt nâng cao</summary>
+
+### Nâng cao
+Đối với các bài toán phổ biến, các tham số mặc định đã đủ để đáp ứng. Ngoài ra, phần mềm còn hỗ trợ các thông số nâng cao có thể tùy chỉnh để phù hợp với những trường hợp đặc biệt.
+
+<Image src="/images/shape_matching/7.PNG" />
+
+- **Chế độ subpixel**: độ chính xác bắt được của phần mềm đặt tới độ chính xác cao nhât, nhỏ hơn 1 px.
+- **Tỷ lệ chồng lấn**: Tỷ lệ phần trăm cho phép 2 vật thể có thể chồng lấn lên nhau mà phần mềm vẫn có thể phát hiện được. Tỷ lệ này nên có giá trị trong khoảng từ 0-30%.
+
+</details>
+
+### Cài đặt giới hạn
+
+<Image src="/images/shape_matching/8.PNG" />
+
+-   **Ngưỡng tìm kiếm**: được hiểu là phần trăm tương đồng so với ảnh mẫu, giá trị từ 0-100%. Những vật thể có phần trăm lớn hơn hoặc bằng ngưỡng này mới được coi là tìm thấy. `Giá trị này thường nằm trong khoảng từ 75-90%`.
+-   **Số lượng tối thiểu**: số lượng tối thiểu cần tìm thấy. Nếu số lượng vật trong khung hình lớn hơn số lượng tối thiếu thì kết quả của module sẽ được coi là đúng.
+-   **Số lượng tối đa**: số lượng tối đa cần tìm thấy. Nếu số lượng vật trong khung hình nhỏ hơn số lượng tối đa thì kết quả của module sẽ được coi là đúng.
+
+## Kết quả
+
+<Image src="/images/shape_matching/9.PNG" />
+
+Kết quả tìm kiếm sẽ trả về:
+- Tọa độ X,Y của vật thể tìm thấy, chính là **Điểm đánh dấu** trên ảnh mẫu. 
+- Góc lệch so với ảnh mẫu.
+- Phần trăm tương đồng so với ảnh mẫu. 
+- Tỷ lệ so với ảnh mẫu.

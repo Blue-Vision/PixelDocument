@@ -1,0 +1,45 @@
+# Count Pixel Intensity
+Là công cụ đo diện tích của sản phẩm dựa trên tổng số pixel đếm được. Với ảnh đen trắng, giá trị pixel trong dải [0, 255] thể hiện độ sáng của pixel. 
+Công cụ sẽ đếm những pixel nằm trong ngưỡng cài đặt độ sáng.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Ứng dụng cho bài toán kiểm tra thừa/thiếu diện tích như thừa thiếu keo.
+- :white_check_mark: Ứng dụng cho bài toán cần kiểm tra có sực khác biệt độ sáng giữa các vật thể. Dựa trên tổng số lượng để phán định.
+
+[Tham khảo công cụ đếm pixel - Count Pixel Color](/docs/modules/Count_Pixel_Color)
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/count_pixel_intensity/count_pixel_intensity.mp4' youtubeUrl='https://www.youtube.com/watch?v=TQcNTfbg7Vo' />
+
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+-   [Định vị - Shape Matching](/docs/modules/Shape_Matching)
+
+:::tip
+Điều chỉnh tham số `dải sáng` từ từ theo 2 chiều đến khi màu đánh dấu (màu đỏ) trên hình ảnh bao phủ hết toàn bộ vật thể.
+:::
+
+## Biểu đồ histogram
+
+Biểu đồ histogram biểu thị độ phủ sáng của hình ảnh, giúp hiểu rõ hơn về phân bổ độ sáng của hình ảnh. Biểu đồ biểu diễn tổng số lượng những pixel (điểm ảnh) có độ sáng (giá trị màu) giống nhau.
+-   Trục **x**: giá trị cường độ pixel (0 - 255 với ảnh 8-bit).
+-   Trục **y**: số lượng pixel có giá trị tương ứng.
+<Image src="/images/measure_brightness/1.PNG" />
+
+Histogram giúp ta hiểu đặc điểm sáng/tối của ảnh:
+-   Histogram lệch trái → ảnh tối.
+-   Histogram lệch phải → ảnh sáng.
+-   Histogram trải rộng đều → ảnh có độ tương phản cao.
+
+Với đồ thị trêm nhận xét thấy đồ thị phân bố tập trung ở 2 vùng, vùng thứ nhất là **x** từ 25-75 tương ứng với những điểm ảnh có giá trị từ 25-75, và vùng thứ hai **x** từ 210-225 tương ứng với những điểm ảnh từ 210-225.
+Ảnh thiên về tối nhiều hơn (màu nền tối), vùng sáng có ít điểm ảnh hơn (hình cánh hoa trong ảnh).
+
+## Kết quả đo
+Công cụ đo trả về các thông số:
+-   **Phần trăm Pixel**: phần trăm pixel đếm được trên tổng diện tích vùng ROI.
+-   **Số lượng Pixel**: số lượng pixel đếm được.
+
+## Cài đặt giới thạn
+Các giới hạn cài đặt dựa trên thông số đo:
+-   **Phần trăm Pixel**: cài đặt giới hạn cho giá trị **Phần trăm Pixel**.
+-   **Số lượng Pixel**: cài đặt giới hạn cho giá trị **Số lượng Pixel**.

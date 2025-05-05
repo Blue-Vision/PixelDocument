@@ -1,0 +1,37 @@
+# Custom Overlay
+
+Công cụ hỗ trợ viết thông tin lên giao diện ImageBox giúp hiển thị thông tin trực quan hơn.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Hỗ trợ hiển thị dữ liệu.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/custom_overlay/custom_overlay.mp4' youtubeUrl='https://www.youtube.com/watch?v=zxgJ2ksDRz0' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+-   [Đếm Pixel - Count Pixel Color](/docs/modules/count_pixel_color)
+
+## Cài đặt
+
+Công cụ hỗ trợ vẽ lên giao diện các hình dạng: hình tứ giác, hình tròn, hình đa giác. Người dùng có thể tùy chỉnh mọi thông số về hình dạng và màu sắc của hình vẽ.
+
+-   **Hình dạng**: vị trí tọa độ và kích thước người dùng có thể được kéo thả trên giao diện, nhập thông số thủ công hoặc tham chiếu tới dữ liệu từ công cụ trước đó.
+-   **Nội dung**: người dùng có thể nhập nội dung hiển thị lên hình vẽ hoặc tham chiếu tới dữ liệu từ công cụ trước đó.
+-   **Điều chỉnh style**: style ban đầu của hình vẽ sẽ là **style mặc định**. Khi người dùng thêm **style theo điều kiên** thì khi điều kiện đó đúng
+    thì style tương ứng sẽ được áp dụng cho hình vẽ. Người dùng có thể thêm nhiều style theo điều kiện khác nhau, trong trường hợp này thứ tự ưu tiên sẽ từ style trên xuống dưới.
+-   **Điều kiện**: người dùng có thể tham chiếu tới dữ liệu từ công cụ trước đó để làm điều kiện cho style hiển thị.
+
+Style của hình vẽ có thể được tùy chỉnh theo nhiều thông số khác nhau, tương ứng với mỗi điều kiện người dùng cần cài đặt style tương ứng.
+<Image width='320' src="/images/custom_overlay/1.PNG" />
+
+-   **Background**: màu sắc hình vẽ.
+-   **Border color**: màu sắc đường viền.
+-   **Border thickness**: độ dày của đường viền.
+-   **Font family**: font chữ của nội dung hiển thị.
+-   **Color**: màu sắc chữ.
+-   **Background**: màu nền của chữ.
+-   **Font size**: kích thước chữ.
+-   **Font style**: kiểu chữ.
+    -   **Bold**: chữ đậm.
+    -   **Italic**: chữ nghiêng.
+    -   **Underline**: chữ gạch chân.

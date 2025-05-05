@@ -1,0 +1,38 @@
+# OCR Pretrain
+
+OCR (Optical Character Recognition) là công cụ nhận dạng/đọc chữ viết trong hình ảnh. 
+Công cụ **OCR pretrain** sử dụng bộ dữ liệu đã được huấn luyện sẵn để đọc nội dung chữ trong ảnh.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Ứng dụng cho bài toán cần đọc nội dung chữ viết trong hình ảnh.
+
+[Tham khảo công cụ OCR simple](/docs/modules/ocr_simple)
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/ocr_pretrain/ocr_pretrain.mp4' youtubeUrl='https://www.youtube.com/watch?v=ae0WNBAIocE' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+
+## Thông số cài đặt
+### Hỗ trợ đọc
+-   **Tự động phát hiện chữ xoay**: hỗ trợ chữ trong ảnh bị xoay.
+-   **Tự động phân biệt chữ xoay 180 độ**: hỗ trợ trường hợp chữ trong ảnh bị xoay 180 độ.
+
+### Cài đặt nâng cao
+-   **Tự động xóa dòng mới**: tự động xóa dòng mới trong nội dung chữ.
+-   **Tự động xóa khoảng trắng**: tự động xóa khoảng trắng (dấu cách,tab) khỏi nội dung chữ.
+-   **Xóa ký tự đặc biệt**: tự động xóa ký tự đặc biệt khỏi nội dung chữ. Những ký tư này do người dùng nhập, ví dụ người dùng có thể nhập `.,;` thì những ký tự `.` `,` `;` sẽ bị xóa khỏi nội dung chữ.
+-   **Tự động chuyển chữ hoa/chữ thường**: tự động chuyển tất cả chữ thành chữ cái in hoa, hoặc chũ cái thường.
+
+## Đọc chữ
+### Kêt quả đọc
+Kết quả trả về nội dung ký tự đọc được.
+
+### Cài đặt giới hạn
+Cài đặt so sánh với nội dung chữ:
+-   **So sánh nội dung**: so sánh với nội dung được nhập bởi người dùng.
+    -   **Equal**: so sánh 2 chữ phải tương đồng.
+    -   **Contain**: chữ công cụ đọc được chứa chữ do người dùng nhập.
+-   **Bỏ qua dòng mới**: bỏ qua ký tự xuống dòng khi so sánh.
+-   **Bỏ qua khoảng trắng**: bỏ qua khoảng trắng (dấu cách,tab) khi so sánh.
+-   **Bỏ qua chữ hoa/chữ thường**: khi chọn chức năng này thì kết quả so sánh sẽ không phân biệt chữ hoa, chữ thường.

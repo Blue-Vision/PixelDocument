@@ -1,0 +1,19 @@
+# Warp Affine Image
+
+Công cụ hỗ trợ dịch ảnh theo tham chiếu tọa độ.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Tiền xử lý ảnh, định vị vật thể về đúng **vị trí tiêu chuẩn trong ảnh**.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/warp_affine/warp_affine.mp4' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+-   [Định vị - Pattern Matching](/docs/modules/pattern_matching)
+-   [Cắt ảnh - Crop Image](/docs/modules/crop_image)
+-   [Lưu ảnh - Save Image](/docs/modules/save_image)
+
+## Cài đặt
+
+-   **Định vị**: tham chiếu tọa độ tới những công cụ có hỗ trợ định vị như [Pattern Matching](/docs/modules/pattern_matching), [Shape Matching](/docs/modules/shape_matching), [Coordinate builder](/docs/modules/coordinate_builder), công cụ sẽ dịch ảnh về đúng tọa độ tiêu chuẩn.
+-   **Nội suy**: việc biến đổi ảnh đều gây ra sai số nhỏ khi thực hiện, hỗ trợ nội suy giúp giảm sai số tới mức thấp nhất, các phương pháp được hỗ trợ `Bilinear/Nearest Neighbor/Bicubic`.

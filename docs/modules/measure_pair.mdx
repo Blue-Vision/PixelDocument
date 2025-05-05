@@ -1,0 +1,57 @@
+# Measure Pair
+
+Công cụ đo kích thước, khoảng cách của các sản phẩm tương tự nhau xếp thành các cặp đôi.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Kiểm tra chân pin của linh kiện.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/measure_pair/measure_pair.mp4' youtubeUrl='https://www.youtube.com/watch?v=6M78up4HJuw' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+
+## Cài đặt
+
+### Phân cực cạnh
+Công cụ tìm kiếm từng cặp cạnh dọc theo hướng tìm kiếm của vùng ROI. Một cặp cạnh sẽ bao gồm cạnh 1 và cạnh 2 như hình bên họa bên dưới.
+<Image src="/images/measure_pair/3.PNG" />
+
+Chế độ tìm kiếm theo phân cực giúp lọc bỏ đi những trường hợp cạnh không mong muốn như chỉ mong muốn cạnh thuộc vùng sáng tới vùng tối hoặc ngược lại.
+- **Dark to bright only**: chế độ tìm kiếm chỉ chọn những cạnh có sự thay đổi từ hướng tối sang sáng.
+- **Bright to dark only**: chế độ tìm kiếm chỉ chọn những cạnh có sự thay đổi từ hướng sáng sang tối.
+- **All edges**: tìm kiếm cả 2 hướng từ sáng sang tối và ngược lại.
+
+<Image src="/images/measure_pair/2.PNG" />
+
+Ảnh phía bên trái chọn chế độ tìm kiếm **Bright to dark only**: đường thẳng tìm thấy sẽ có phía bên trái là vùng sáng và phía bên phải là vùng tối.
+Ảnh phía bên phải tìm kiếm theo **Dark to bright only**: kết quả sẽ tìm thấy đường thẳng có phía bên trái là vùng tối và bên phải là vùng sáng. 
+Hướng tìm kiếm theo hình mũi tên.
+
+### Tìm kiếm
+- **First edge**: tìm kiếm cạnh đầu tiên.
+- **Best edge**: tìm kiếm cạnh có sự khác biệt lớn nhất.
+<Image src="/images/measure_pair/4.PNG" />
+Trong hình minh họa, hướng tìm kiếm từ trái sang phải, khi chọn chế độ **First egde** thì cạnh đầu tiên sẽ được lựa chọn, 
+nếu chọn chế độ **Best edge** thì cạnh có sự khác biệt lớn nhất sẽ được lựa chọn.
+
+### Chênh lệch cạnh tối thiểu
+Chênh lệch cạnh được hiểu là sự chênh lệch cường độ giá trị giữa 2 điểm pixel, khi độ chênh lệch này cao hơn giá trị do người dùng đặt thì điểm pixel sẽ được coi là 1 điểm của cạnh.
+Giá trị này càng cao thì điểm cạnh này càng có độ tin cậy cao.
+
+## Kết quả
+Kết quả trả về dựa trên 2 kết quả chính: kích thước lead và khoảng cách giữa 2 lead. Lead được hiểu là cặp cạnh chứa sản phẩm, 2 thông số được mô tả chi tiết hơn ở hình minh họa dưới.
+<Image src="/images/measure_pair/5.PNG" />
+Kết quả:
+-   **Min lead distance**: khoảng các tối thiểu giữa 2 lead.
+-   **Average lead distance**: khoảng các trung bình giữa 2 lead.
+-   **Max lead distance**: khoảng các tối đa giữa 2 lead.
+-   **Min lead width**: chiều rộng tối thiểu của lead.
+-   **Average lead width**: chiều rộng trung bình của lead.
+-   **Max lead width**: chiều rộng tối đa của lead.
+-   **Number of lead**: số lượng lead.
+
+## Cài đặt giới thạn
+Các giới hạn cài đặt dựa kết quả đo:
+-   **Khoảng cách lead**: cài đặt dải giới hạn cho khoảng cách giữa 2 lead.
+-   **Kích thước lead**: cài đặt dải giới hạn cho kích thước lead.
+-   **Số lượng lead**: cài đặt giới hạn cho số lượng lead.

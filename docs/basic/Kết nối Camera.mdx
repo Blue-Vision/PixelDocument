@@ -1,0 +1,24 @@
+# Kết nối Camera
+
+Hướng dẫn kết nối camera với phần mềm Pixel. Để sử dụng với camera người dùng cần cài đặt driver camera. Download driver camera tại [Machine Vision Software MVS V4.4.0](https://drive.google.com/file/d/18OflDJXgAV-PBC8y4Vv4hBCYLsGOhToy/view?usp=sharing).
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/basic/camera_connection.mp4' />
+
+## Thông số cài đặt
+
+## Hình ảnh
+
+-   **Kiểu Pixel**: chọn kiểu pixel của camera.
+-   **Exposure time (Độ phới sáng)**: chọn thời gian phơi sáng của camera. Thời gian phơi sáng càng lớn thì độ sáng của ảnh càng cao và ngược lại.
+-   **Gain (Tăng sáng)**: tăng độ sáng của camera sử dụng gain, giải gain từ [0 - 10].
+
+### Cài đặt trigger
+-   **Trigger mode (Chế độ Trigger)**: chọn chế độ bật/tắt trigger cho camera.
+-   **Trigger source (Nguồn Trigger)**: chọn nguồn trigger cho camera. Với chế độ trigger `Software` thì camera sẽ được kích hoạt bởi phần mềm Pixel. còn nếu chế độ trigger từ `Line 0/1/2/3` thì camera sẽ được kích hoạt bởi dây tín hiệu `line 0/1/2/3` từ bên ngoài. Người dùng cần kiểm tra tài liệu phàn cứng của camera để kích hoạt dây cho đúng.
+-   **Trigger delay (Độ trễ Trigger)**: chọn độ trễ trigger cho camera. Khi có tín hiệu trigger thì camera sẽ delay 1 khoảng sau đó mới chụp ảnh. Thông số này thường được sử dụng khi camera chụp ảnh sau 1 quá trình di chuyển để tránh rung.
+
+### Thông tin
+
+-   **User ID (Tên người dùng)**: cài đặt tên người dùng cho camera.
+

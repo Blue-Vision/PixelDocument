@@ -1,0 +1,39 @@
+# Color Classification
+
+Công cụ phân loại màu sắc trong hình ảnh. Công cụ sử dụng kỹ thuật **Machine learning** để trích xuật đặc trưng, huấn luyện và nhận dạng màu sắc.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Ứng dụng cho bài toán kiểm tra có/không, đúng vị trí dựa trên màu sắc. Ví dụ như các đầu dây cắm của dây mạng cần cắm đúng vị trí.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/color_classification/color_classification.mp4' youtubeUrl='https://www.youtube.com/watch?v=Qe7aF1yYifg' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+
+## Huấn luyện màu sắc
+### Gán nhãn (label)
+Bước đầu tiền để training màu sắc là dán nhãn `label` với những ảnh có cùng màu sắc.
+:::tip
+**Số lượng chữ huấn luyện**: mỗi màu sắc nên huấn luyện trong khoảng từ 10-30 mẫu. Số lượng thay đổi tùy vào màu sắc có bị thay đổi nhiều hay không,
+nếu bị thay đổi nhiều thì nên huấn luyện màu sắc đó nhiều. Số lượng mẫu huấn luyện trên từng màu cũng nên cân bằng, không nên chênh lệch quá nhiều, 
+ví dụ chữ màu `đỏ` được huấn luyện 30 mẫu nhưng màu `vàng` chỉ được huấn luyện 2 mẫu. Nếu chênh lệch nhiều kết quả phân loại có thể thiên về mẫu màu được huấn luyện nhiều hơn.
+
+**Mẫu huấn luyện**: cần chú ý không nhầm lẫn `label` giữa các màu sắc, nhầm lẫn sẽ gây nhiễu tới kết quả nhận dạng.
+:::
+
+<Image src="/images/color_classification/1.PNG" />
+
+### Tùy chọn
+-   **Độ nhạy màu sắc**: dữ liệu màu sắc được huấn luyện với độ nhạy khác nhau từ mức `Low` -> `Medium` -> `High`.
+-   **Sử dụng đặc trưng cường độ ảnh**: sử dụng thêm đặc trưng là cường độ ảnh để huấn luyện.
+-   **Phương thức phân loại**: đây là lựa chọn nâng cao, đa phần trường hợp thông số mặc định sẽ cho kết quả tốt nhất.
+
+## Kết quả
+
+Kết quả trả về là màu sắc được huấn luyện.
+
+## Cài đặt giới hạn
+
+Cài đặt so sánh với kết quả nhận dạng:
+
+-    **Kết quả nhãn**: so sánh màu sắc nhận dạng được với màu sắc do người dùng chọn.

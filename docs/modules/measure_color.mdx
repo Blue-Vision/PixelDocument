@@ -1,0 +1,45 @@
+# Measure Color
+Là công cụ sử dụng để đo thông số màu sắc của hình ảnh (ảnh dạng 3 kênh màu). Dựa trên kết quả đo màu sắc của hình ảnh có thể cài đặt giới hạn xác định hình ảnh đạt tiêu chuẩn hay không đạt tiêu chuẩn.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Ứng dụng cho bài toán cần kiểm tra có sực khác biệt màu sắc giữa các vật thể.
+
+[Tham khảo công cụ đo màu sắc - Measure Brightness](/docs/modules/Measure_Brightness) 
+
+[Tham khảo công cụ đếm pixel - Count Pixel Intensity](/docs/modules/Count_Pixel_Intensity)
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/measure_color/measure_color.mp4' youtubeUrl='https://www.youtube.com/watch?v=fcYKj3Jl5cY' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+
+## Biểu đồ histogram
+
+Biểu đồ histogram của hình ảnh theo 3 kênh màu Red/Green/Blue giúp hiểu rõ hơn về phân bổ màu sắc của hình ảnh. Biểu đồ biểu diễn tổng số lượng những pixel (điểm ảnh) có độ sáng (giá trị màu) giống nhau theo từng **kênh màu**.
+-   Trục **x**: Giá trị cường độ pixel (0 - 255 với ảnh 8-bit).
+-   Trục **y**: Số lượng pixel có giá trị tương ứng.
+
+Màu sắc đỏ/xanh lá/xanh lam trong biểu đồ histogram tương ứng với kênh màu Red/Green/Blue.
+
+[Tìm hiểu thêm về Histogram](/docs/modules/Measure_Brightness#biểu-đồ-histogram)
+
+<Image src="/images/measure_color/1.PNG" />
+
+## Lựa chọn kiểu hình ảnh
+Có thể chuyển ảnh sang hệ không gian màu khác như: HSV, HLS để thuận tiện hơn cho việc cài đặt giới hạn đo màu sắc. Không gian màu BGR phù 
+hợp cho mắt người nhìn nhưng không thuận tiên cho việc cài đặt dải số học, hai kênh màu HSV và HLS phù hợp cài đặt theo dải đo hơn.
+<Image width='480' src="/images/measure_color/2.PNG" />
+
+:::tip
+Thường chọn không gian màu HLS là tốt nhất.
+:::
+
+## Thông số đo
+Công cụ đo trả về các thông số theo từng kênh màu:
+-   **Trung bình**: giá trị trung bình pixel của kênh màu.
+-   **Độ lệch tiêu chuẩn**: độ lệch chuẩn pixel của của kênh màu.
+
+## Cài đặt giới thạn
+Các giới hạn cài đặt dựa trên thông số đo, giới hạn sẽ được cài đặt theo từng kênh màu:
+-   **Trung bình**: cài đặt giới hạn cho giá trị **trung bình**.
+-   **Độ lệch tiêu chuẩn**: cài đặt giới hạn cho giá trị **độ lệch tiêu chuẩn**.

@@ -1,0 +1,37 @@
+# Inspect Contour
+
+Kiểm tra biên dạng của vật thể so với biên dạng tiêu chuẩn.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Ứng dụng cho bài toán kiểm tra chất lượng của sản phẩm qua biên dạng của sản phẩm.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/inspect_contour/inspect_contour.mp4' youtubeUrl='https://www.youtube.com/watch?v=C7IRx-oK_kc' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+-   [Định vị - Shape Matching](/docs/modules/Shape_Matching)
+
+## Cài đặt
+
+-   **Hệ số làm mịn ảnh**: mức độ làm mịn ảnh trước khi tìm kiếm biên dạng.
+-   **Ngưỡng dưới**: độ chênh lệch pixel được coi là điểm cạnh ở mức độ tin cậy thấp.
+-   **Ngưỡng trên**: độ chênh lệch pixel được coi là điểm cạnh ở mức độ tin cậy cao.
+-   **Độ dài tối thiểu**: độ dài tối thiếu của cạnh.
+
+### Nâng cao
+-   **Hướng tìm kiếm**: hướng tìm kiếm cạnh.
+    -   **Left to right**: hướng tìm từ trái sang phải.
+    -   **Right to left**: hướng tìm từ phải sang trái.
+    -   **Top to bottom**: hướng tìm từ trên xuống dưới.
+    -   **Bottom to top**: hướng tìm từ dưới lên trên.
+-   **Kiểu lọc**: lọc cạnh theo:
+    -   **Maximum length**: chọn lựa cạnh theo độ dài tối đa.
+    -   **Closest to search start**: chọn cạnh gần theo hướng tìm kiếm.
+
+## Kết quả
+Danh sách tọa độ các điểm pixel lỗi và khoảng cách so với điểm pixel tiêu chuẩn. Khoảng cách theo đơn vị pixel.
+
+## Cài đặt giới hạn
+
+-   **Khoảng cách tối đa**: khoảng cách tối đa so với điểm pixel tiêu chuẩn, vượt qua khoảng cách này pixel sẽ được coi là lỗi.
+-   **Số điểm lỗi tối đa**: số lượng điểm lỗi tối đa.

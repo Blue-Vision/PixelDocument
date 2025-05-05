@@ -1,0 +1,42 @@
+# Find Peak
+
+Công cụ tìm kiếm điểm ngoài cùng (điểm cực đại) của một biên dạng.
+
+- :white_check_mark: Ứng dụng cho bài toán cần tìm kiếm tra sai lệch vị trí ví dụ như vật thể bị lệch quá một giới hạn.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/find_peak/find_peak.mp4' youtubeUrl='https://www.youtube.com/watch?v=3l_1DAJ4mbQ' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+
+## Cài đặt
+
+-   **Hướng tìm kiếm**: hướng tìm kiếm điểm cực đại.
+    -   **Left to right**: hướng tìm từ trái sang phải. Điểm bắt được sẽ gần với điểm phía bên trái nhất.
+    -   **Right to left**: hướng tìm từ phải sang trái. Điểm bắt được sẽ gần với điểm phía bên phải nhất.
+    -   **Top to bottom**: hướng tìm từ trên xuống dưới. Điểm bắt được sẽ gần với điểm phía bên trên nhất.
+    -   **Bottom to top**: hướng tìm từ dưới lên trên. Điểm bắt được sẽ gần với điểm phía bên dưới nhất.
+-   **Phương thức cạnh**: phương thức tìm kiếm biên dạng của sản phẩm. Cả 2 phương thức đều có độ chính xác cao tới subpixel, người dùng có thể lựa chọn và thực nghiệm tùy theo hình ảnh bài toán.
+    - **Canny**: khi chọn canny sẽ có những thông số cài đặt sau:
+        -   **Sigma**: mức độ làm mịn ảnh trước khi tìm kiếm biên dạng.
+        -   **Ngưỡng dưới**: độ chênh lệch pixel được coi là điểm cạnh ở mức độ tin cậy thấp.
+        -   **Ngưỡng trên**: độ chênh lệch pixel được coi là điểm cạnh ở mức độ tin cậy cao.
+    - **Partial Area Effect**: khi chọn Partial Area Effect sẽ có những thông số cài đặt sau:
+        -   **Ngưỡng**: chênh lệch cường độ giá trị giữa 2 điểm pixel, khi độ chênh lệch này cao hơn giá trị do người dùng đặt thì điểm pixel sẽ được coi là 1 điểm của cạnh. Giá trị này càng cao thì điểm cạnh này càng có độ tin cậy cao.
+        -   **Số lần lặp**: số lần giảm nhiểu, giá trị càng cao thì số lần giảm nhiễu càng nhiều.
+        -   **Cách thức**: có giá trị bằng 1 hoặc 2.
+-   **Phương thức Peak**: 
+    -   **Basic**.
+    -   **Base on distance**.
+
+-   **Epsilon**: có thể lọc bớt số lượng điểm pixel trên biên dạng để tăng tốc độ tính toán. Những pixel có khoảng cách nhở hơn epsilon sẽ được loại bỏ.
+
+## Kết quả
+
+-   **Peak point.X**: tọa độ điểm peak point theo phương X.
+-   **Peak point.Y**: tọa độ điểm peak point theo phương Y.
+
+## Cài đặt giới hạn
+Các giới hạn cài đặt dựa trên kết quả:
+-   **Tọa độ X**: cài đặt giới hạn phạm vị cho giá trị **Peak point.X**.
+-   **Tọa độ Y**: cài đặt giới hạn phạm vị cho giá trị **Peak point.Y**.

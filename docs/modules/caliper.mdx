@@ -1,0 +1,76 @@
+# Caliper
+Công cụ tính toán khoảng cách nhỏ nhất hoặc lớn nhất giữa hai cạnh của sản phẩm.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Ứng dụng cho bài toán đo đạc khoảng cách như khe hở.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/caliper/caliper.mp4' youtubeUrl='https://www.youtube.com/watch?v=5RB8mRYC4v0' />
+Các công cụ hỗ trợ được sử dụng trong video:
+-   [Nguồn ảnh - Imagesource](/docs/modules/Imagesource)
+-   [Định vị - Shape Matching](/docs/modules/Shape_Matching)
+
+## Ý tưởng
+Công cụ này xác định các điểm cạnh trên sản phẩm dọc theo đường tìm kiếm, nhóm 2 điểm cạnh bắt được thành 2 đoạn thẳng và tính toán khoảng cách giữa 2 đoạn thẳng đó, 
+cũng có thể đo khoảng cách giữa các cặp điểm vào tính khoảng cách trung bình. Trong hình minh họa:
+
+-   Các đường màu cam biểu thị đường tìm kiếm điểm cạnh.
+-   Các dấu cộng màu xanh là các điểm cạnh được phát hiện.
+-   Đường màu cam nằm giữa là đường tâm của vùng ROI.
+
+<Image src="/images/caliper/1.PNG" width='600' />
+
+## Thông số cài đặt
+### Hướng tìm kiếm
+
+Hướng tìm kiếm hỗ trợ 4 kiểu tìm kiếm:
+
+<Image src="/images/caliper/2.PNG" />
+
+- **Horizontal min caliper**: đo khoảng cách ngắn nhất giữa 2 cạnh theo chiều ngang. Hướng tìm cạnh sẽ đi hướng từ tâm ra ngoài.
+- **Horizontal max caliper**: đo khoảng cách lớn nhất giữa 2 cạnh theo chiều ngang. Hướng tìm cạnh sẽ đi hướng từ ngoài vào tâm.
+- **Vertical min caliper**: đo khoảng cách ngắn nhất giữa 2 cạnh theo chiều dọc. Hướng tìm cạnh sẽ đi hướng từ tâm ra ngoài.
+- **Vertical max caliper**: đo khoảng cách lớn nhất giữa 2 cạnh theo chiều dọc. Hướng tìm cạnh sẽ đi hướng từ ngoài vào tâm.
+
+### Phân cực cạnh
+Chế độ tìm kiếm theo phân cực giúp lọc bỏ đi những trường hợp cạnh không mong muốn như chỉ mong muốn cạnh thuộc vùng sáng tới vùng tối hoặc ngược lại.
+- **Dark to bright only**: chế độ tìm kiếm chỉ chọn những cạnh có sự thay đổi từ hướng tối sang sáng.
+- **Bright to dark only**: chế độ tìm kiếm chỉ chọn những cạnh có sự thay đổi từ hướng sáng sang tối.
+- **All edges**: tìm kiếm cả 2 hướng từ sáng sang tối và ngược lại.
+
+<Image src="/images/caliper/3.PNG" />
+
+Ảnh phía bên trái chọn chế độ tìm kiếm **Bright to dark only**: đường thẳng tìm thấy sẽ có phía bên trái là vùng sáng và phía bên phải là vùng tối.
+Ảnh phía bên phải tìm kiếm theo **Dark to bright only**: kết quả sẽ tìm thấy đường thẳng có phía bên trái là vùng tối và bên phải là vùng sáng. 
+Hướng tìm kiếm theo hình mũi tên.
+
+### Tìm kiếm
+- **First edge**: tìm kiếm cạnh đầu tiên.
+- **Best edge**: tìm kiếm cạnh có sự khác biệt lớn nhất.
+<Image src="/images/caliper/4.PNG" />
+Trong hình minh họa, hướng tìm kiếm chọn **Horizontal min caliper**, phân cực **Bright to dark only**, khi chọn chế độ **First egde** thì cạnh đầu tiên sẽ được lựa chọn, 
+nếu chọn chế độ **Best edge** thì cạnh có sự khác biệt lớn nhất sẽ được lựa chọn.
+
+### Khoảng trống (Gap)
+Khoảng cách giữa các đường mũi tên tìm kiếm. Khoảng cách càng nhỏ số điểm cạnh tìm kiếm càng nhiều, số điểm hình thành đoạn thẳng càng nhiều nhưng thời gian tính toán sẽ lâu hơn. 
+
+### Chênh lệch cạnh tối thiểu
+Chênh lệch cạnh được hiểu là sự chênh lệch cường độ giá trị giữa 2 điểm pixel, khi độ chênh lệch này cao hơn giá trị do người dùng đặt thì điểm pixel sẽ được coi là 1 điểm của cạnh.
+Giá trị này càng cao thì điểm cạnh này càng có độ tin cậy cao.
+
+### Phương pháp tính
+Phép đo của caliper mặc định là đo khoảng cách giữa 2 đoạn thẳng được thành lập bởi các điểm cạnh. Sử dụng chức năng **Use mode result**
+khi muốn đo khoảng cách theo từng cặp điểm và tính toán kết quả dựa trên các khoảng cách của các cặp điểm. Phép đo:
+-   **Minimum** : lấy khoảng cách ngắn nhất của cặp điểm.
+-   **Maximum** : lấy khoảng cách lớn nhất của cặp điểm.
+-   **Average** : lấy khoảng cách trung bình của các cặp điểm.
+-   **Minimum** : lấy khoảng cách trung gian của các cặp điểm.
+
+## Kết quả
+Kết quả đo:
+-   **Khoảng cách đo được**: khoảng cách, đơn vị pixel.
+
+## Cài đặt giới thạn
+Các giới hạn cài đặt dựa trên thông số đo:
+-   **Khoảng cách tối thiểu**: cài đặt giới hạn tối thiểu cho giá trị **Khoảng cách đo được**.
+-   **Khoảng cách tối đa**: cài đặt giới hạn tối đa cho giá trị **Khoảng cách đo được**.

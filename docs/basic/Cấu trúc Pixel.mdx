@@ -1,0 +1,53 @@
+---
+sidebar_position: 1
+---
+
+# Cấu trúc Pixel
+
+Pixel là phần mềm xử lý hình ảnh chuyên dụng, cung cấp các công cụ mạnh mẽ để phát triển các ứng dụng kiểm tra tự động. Với giao diện trực quan và các module xử lý đa dạng, Pixel giúp bạn triển khai các giải pháp thị giác máy tính một cách nhanh chóng và hiệu quả.
+
+Để bắt đầu làm quen với Pixel, hãy xem video hướng dẫn ngắn dưới đây. Video sẽ giúp bạn hiểu cách tạo một dự án mới từ đầu và triển khai nó vào thực tế một cách dễ dàng.
+
+<VideoPlayer url='/videos/basic/pixel_introduction.mp4' />
+
+## Trang cài đặt
+<Image src="/images/basic/setup_page.png" />
+
+### Các vùng chính
+- Vùng 1: lưu trình hoạt động của project, người dùng sử dụng các module vision của phần mềm cài đặt theo lưu trình để kiểm tra theo yêu cầu của bài toán.
+- Vùng 2: chứa các module vision của phần mềm.
+- Vùng 3: các công cụ cài đặt.
+- Vùng 4: vùng hiển thị ảnh đang được xử lý.
+- Vùng 5: giao diện cài đặt của module.
+- Vùng 6: thông tin khi chạy của các module.
+
+### Lưu trình hoạt động
+Lưu trình hoạt động của pixel tương đồng với cách một lưu trình thuật toán chạy. Các module sẽ lần lượt được chạy theo thứ tự từ trên xuống dưới. Dữ liệu của chương trình cũng được truyền qua các module tuân theo thú tự từ trên xuống dưới.
+
+<Image src="/images/basic/flow_2.png" />
+
+Trong ví dụ trên: module `Images` sẽ được thực hiện đầu tiên sau đó là module `Shape Matching 2` được thực hiện, các module tiếp theo lần lượt được thực hiện tới module cuối cùng. Để chạy lưu trình người dùng có thể nhấn nút ![start flow](/images/basic/start.png) để chạy 1 lần, hoặc nhấn nút ![start flow](/images/basic/start_loop.png) để chạy flow liên tục. Để dừng chương trình nhấn nút ![stop flow](/images/basic/stop.png).
+
+:::tip
+
+Trong thực tế, chương trình luôn được chạy trong chế độ vòng lặp. Khi 1 flow chạy kết thúc, chương trình sẽ mặc định dừng chờ một khoảng thời gian (được cài đặt trong cài đặt, mặc định là 10ms) sau đó mới chạy lại flow mới.
+
+:::
+
+## Trang cài đặt giao diện
+Trang giao diện cho phép người dùng cài đặt, tùy chỉnh hình ảnh hiển thị, thông tin và kết quả hiển thị lên giao diện sử dụng. Pixel có sẵn những mẫu giao diện sẵn để ngưởi dùng có thể cài đặt nhanh như giao diện 1 camera, 2 camera, 3 camera. Ngoài ra giao diện cho phép người dùng tùy biến toàn bộ giao diện theo nhu cầu của bài toán hoặc sở thích của người dùng.
+
+<Image src="/images/basic/setup_ui_page_2.png" />
+
+Các vùng chính:
+- Vùng 1: giao diện cài đặt hiện tại.
+- Vùng 2: lựa chọn các control giao diện.
+- Vùng 3: cài đặt tính năng của chương trình như đếm lịch sử chạy, lưu trữ dữ liệu log, chọn lựa kiểu giao diện, v.vv
+- Vùng 4: vùng cài đặt tùy chỉnh control.
+
+Để biết thêm chi tiết, vào mục trang cài đặt giao diện.
+
+## Trang chính
+Trang giao diện dành cho người dùng sử dụng. Trang này được cài đặt từ trang 'cài đặt giao diện'.
+
+<Image src="/images/basic/inspection_page_2.png" />
