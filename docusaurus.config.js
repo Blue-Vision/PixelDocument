@@ -18,14 +18,14 @@ const config = {
   url: 'https://Blue-Vision.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/PixelDocument',
+  baseUrl: '/PixelDocument/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Blue-Vision', // Usually your GitHub org/user name.
   projectName: 'PixelDocument', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
+  deploymentBranch: 'gh-pages',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
