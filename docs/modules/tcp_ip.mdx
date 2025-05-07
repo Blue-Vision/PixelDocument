@@ -9,7 +9,7 @@ Hỗ trợ giao thức TCP/IP cho phép các thiết bị kết nối truyền g
 ### Hướng dẫn sử dụng TCP/IP Server
 Phần mềm Pixel sẽ được thiết lập là server, các thiết bị khác sẽ là client. Các thiết bị client sẽ gửi yêu cầu tới server và nhận dữ liệu từ server. Server hỗ trợ nhiều client kết nối cùng lúc.
 
-<VideoPlayer url='/videos/tcp_ip/tcp_ip_server.mp4' />
+<VideoPlayer url='/videos/tcp_ip/tcp_ip_server.mp4' youtubeUrl='https://www.youtube.com/watch?v=ZHoEO5pSBbI' />
 
 ### Cài đặt TCP/IP Server
 Giao diện cài đặt mở cổng TCP/IP server như hình bên dưới:
@@ -21,18 +21,18 @@ Giao diện cài đặt mở cổng TCP/IP server như hình bên dưới:
 -   **Chỉ cho phép client cụ bộ kết nối**: nếu chọn, server sẽ chỉ cho phép các client cùng trên máy tính với phần mềm mới có thể kết nối, nếu không chọn, server sẽ cho phép tất cả các client từ bên ngoài có thể kết nối tới.
 
 ### Thử nghiệm đọc/ghi
-Người dùng có thể thử nghiệm đọc/ghi dữ liệu từ server bằng cách sử dụng các nút bấm trong phần này. Các nút bấm sẽ gửi yêu dữ liệu tới client và đọc dữ liệu nhận được từ phía client.
+Người dùng có thể thử nghiệm đọc/ghi dữ liệu từ server bằng cách sử dụng các nút bấm trong phần này. Các nút bấm sẽ gửi dữ liệu tới client và đọc dữ liệu nhận được từ phía client.
 
 :::note
 Hỗ trợ người dùng xử lý dữ liệu đặc biệt dạng hex. Cách viết như sau: `{XX}`, trong đó XX là giá trị hex từ 00 tới FF. 
-Server sẽ tự động chuyển đổi sang dạng char theo bảng ASCII. Ví dụ: khi viết "\{41\}" sẽ được chuyển thành "A", "\{42\}" sẽ được chuyển thành B...
+Công cụ sẽ tự động chuyển đổi sang dạng char theo bảng ASCII. Ví dụ: khi viết "\{41\}" sẽ được chuyển thành "A", "\{42\}" sẽ được chuyển thành B...
 
 Ví dụ: khi viết "Hello\{0A\}" sẽ được chuyển thành "Hello\n". "\n" được hiểu là ký tự xuống dòng trong bảng ASCII.
 :::
 
 ### Hướng dẫn sử dụng TCP/IP Client
 Phần mềm Pixel sẽ được thiết lập là client, thiết bị khác sẽ là server. Phần mềm Pixel sẽ gửi yêu cầu tới server và nhận dữ liệu từ server.
-<VideoPlayer url='/videos/tcp_ip/tcp_ip_client.mp4' />
+<VideoPlayer url='/videos/tcp_ip/tcp_ip_client.mp4' youtubeUrl='https://www.youtube.com/watch?v=BH_lc0k0TaY' />
 
 ### Cài đặt TCP/IP Server
 Giao diện cài đặt mở kết nối TCP/IP client như hình bên dưới:

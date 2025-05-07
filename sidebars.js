@@ -26,10 +26,10 @@
       type: 'category',
       label: 'Cơ Bản',
       items: [
-        'basic/Cấu trúc Pixel',
-        'basic/Tạo Project',
-        'basic/Kết nối Camera',
-        'basic/Project đầu tiên',
+        'basic/pixel_structure',
+        'basic/edit_project',
+        'basic/connect_camera',
+        'basic/first_project',
       ],
     },
     {
@@ -80,7 +80,7 @@
         'modules/custom_overlay',
         'modules/tcp_ip',
         'modules/RS232_RS485',
-        'modules/modbus',
+        'modules/modbus_rtu',
       ],
     },
   ],

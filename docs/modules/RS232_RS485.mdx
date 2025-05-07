@@ -1,2 +1,60 @@
 # RS232/RS485
 
+Hỗ trợ giao tiếp chuẩn RS232/RS485 với các thiết bị ngoại vi như PLC, máy quét mã vạch, máy in, cảm biến, v.vv.
+
+**Ứng dụng phổ biến:**
+- :white_check_mark: Giao tiếp với các thiết bị ngoại vi.
+
+## Video hướng dẫn
+<VideoPlayer url='/videos/rs232_rs485/rs232_rs485.mp4' youtubeUrl='https://www.youtube.com/watch?v=QiBqWVna-Hg' />
+
+## Cài đặt RS232/RS485
+Giao diện cài đặt giao tiếp như hình bên dưới:
+<Image src="/images/rs232_rs485/1.PNG"  />
+
+-   **Cổng kết nối**: chọn cổng kết nối RS232/RS485 với thiết bị ngoại vi.
+-   **Baud Rate**:
+    -   Tốc độ truyền dữ liệu, tính bằng bit trên giây (bps). Ví dụ: 9600, 19200, 115200 bps.
+    -   Cả hai thiết bị phải dùng cùng baud rate để giao tiếp chính xác.
+-   **Data Bits**:
+    -   Số bit dữ liệu trong mỗi khung truyền (frame). Thường là 7 hoặc 8 bit.
+    -   Là phần chứa thông tin thực sự cần truyền.
+-   **Parity**:
+    -   Bit kiểm tra chẵn/lẻ, dùng để phát hiện lỗi.
+    -   None: Không dùng parity
+    -   Even: Tổng số bit 1 là chẵn
+    -   Odd: Tổng số bit 1 là lẻ
+    -   Mark/Space: Ít dùng, luôn là 1 hoặc 0
+-   **Stop Bits**:
+    -   Số bit dừng, đánh dấu kết thúc một khung truyền.
+    -   Thường là 1 hoặc 2 bit. Cần đúng để đồng bộ truyền nhận.
+-   **Timeout đọc**: thời gian chờ để nhận dữ liệu từ thiết bị ngoại vi. Nếu không nhận được dữ liệu trong thời gian này, công cụ sẽ báo lỗi. Đơn vị ms.
+-   **Timeout ghi**: thời gian chờ để gửi dữ liệu tới thiết bị ngoại vi. Nếu không gửi được trong thời gian này, công cụ sẽ báo lỗi. Đơn vị ms.
+
+### Thử nghiệm đọc/ghi
+Người dùng có thể thử nghiệm đọc/ghi dữ liệu bằng cách sử dụng các nút bấm trong phần này. Các nút bấm sẽ gửi/đọc dữ liệu từ thiết bị ngoại vi.
+
+:::note
+Hỗ trợ người dùng xử lý dữ liệu đặc biệt dạng hex. Cách viết như sau: `{XX}`, trong đó XX là giá trị hex từ 00 tới FF. 
+Công cụ sẽ tự động chuyển đổi sang dạng char theo bảng ASCII. Ví dụ: khi viết "\{41\}" sẽ được chuyển thành "A", "\{42\}" sẽ được chuyển thành B...
+
+Ví dụ: khi viết "Hello\{0A\}" sẽ được chuyển thành "Hello\n". "\n" được hiểu là ký tự xuống dòng trong bảng ASCII.
+:::
+
+### Module RS232/RS485 đọc dữ liệu
+
+<Image src="/images/rs232_rs485/2.PNG" width='300' />
+
+-   **Đọc tới nội dung được chỉ định**: công cụ sẽ đọc dữ liệu tới khi nào gặp `nội dung được chỉ định` thì dừng lại hoặc vượt quá timeout (được cài đặt trong ô **Đọc timeout**). `Nội dung được chỉ định` có thể là một chuỗi ký tự hoặc một ký tự đặc biệt như `\n`, `\r`, `\t`.
+-   **Giữ nội dung chỉ định trong kết quả**: nếu chọn, công cụ sẽ giữ lại `nội dung chỉ định` trong kết quả đọc được. Nếu không chọn, công cụ sẽ xóa `nội dung chỉ định` trong kết quả đọc được.
+-   **Xem chế độ Hex**: hỗ trợ hiển thị dữ liệu đọc được dưới dạng hex. Nếu chọn, công cụ sẽ hiển thị dữ liệu đọc được dưới dạng hex. Nếu không chọn, công cụ sẽ hiển thị dữ liệu đọc được dưới dạng char.
+
+<Image src="/images/rs232_rs485/4.PNG" />
+
+Ví dụ: dữ liệu đọc được là `Hello\r`, nếu quy đổi sang hex sẽ là `0x48 0x65 0x6C 0x6C 0x6F 0x0D`. Dữ liệu sẽ hiển thị là `Hello` khi không chọn **Xem chế độ Hex** và hiển thị là `{48}{65}{6C}{6C}{6F}{0D}` khi chọn **Xem chế độ Hex**.
+
+### Module RS232/RS485 gửi dữ liệu
+
+<Image src="/images/rs232_rs485/3.PNG" width='300' />
+
+Hỗ trợ gửi dữ liệu tới thiết bị ngoại vi. Người dùng có thể nhập dữ liệu thủ công, chọn dữ liệu từ những công cụ trước đó. Công cụ cũng hỗ trợ gửi mã hex.
