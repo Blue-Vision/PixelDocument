@@ -7,3 +7,81 @@ Hỗ trợ giao tiếp chuẩn modbus RTU với các thiết bị ngoại vi nh�
 
 ## Video hướng dẫn
 <VideoPlayer url='/videos/modbus/modbusRTU.mp4' youtubeUrl='https://www.youtube.com/watch?v=9RP1vQhj8xY' />
+
+## Cài đặt Modbus
+Giao diện cài đặt giao tiếp như hình bên dưới:
+<Image src="/images/modbus/1.PNG"  />
+
+-   **Cổng COM**: chọn cổng kết nối RS232/RS485 với thiết bị ngoại vi.
+-   **BaudRate**:
+    -   Tốc độ truyền dữ liệu, tính bằng bit trên giây (bps). Ví dụ: 9600, 19200, 115200 bps.
+    -   Cả hai thiết bị phải dùng cùng baud rate để giao tiếp chính xác.
+-   **Data Bits**:
+    -   Số bit dữ liệu trong mỗi khung truyền (frame). Thường là 7 hoặc 8 bit.
+    -   Là phần chứa thông tin thực sự cần truyền.
+-   **Parity**:
+    -   Bit kiểm tra chẵn/lẻ, dùng để phát hiện lỗi.
+    -   None: Không dùng parity
+    -   Even: Tổng số bit 1 là chẵn
+    -   Odd: Tổng số bit 1 là lẻ
+    -   Mark/Space: Ít dùng, luôn là 1 hoặc 0
+-   **Stop Bits**:
+    -   Số bit dừng, đánh dấu kết thúc một khung truyền.
+    -   Thường là 1 hoặc 2 bit. Cần đúng để đồng bộ truyền nhận.
+-   **Timeout đọc**: thời gian chờ để nhận dữ liệu từ thiết bị ngoại vi. Nếu không nhận được dữ liệu trong thời gian này, công cụ sẽ báo lỗi. Đơn vị ms.
+-   **Timeout ghi**: thời gian chờ để gửi dữ liệu tới thiết bị ngoại vi. Nếu không gửi được trong thời gian này, công cụ sẽ báo lỗi. Đơn vị ms.
+-   **Kiểu truyền tin**: chọn kiểu truyền tin giữa Master và Slave. Có 2 kiểu truyền tin là RTU và ASCII.
+    -   RTU: kiểu truyền tin nhị phân, dùng cho các thiết bị có tốc độ cao.
+    -   ASCII: kiểu truyền tin ký tự, dùng cho các thiết bị có tốc độ thấp hơn.
+
+### Thử nghiệm đọc/ghi
+Người dùng có thể thử nghiệm đọc/ghi dữ liệu bằng cách sử dụng các tính năng trong phần này.
+
+### Module master đọc dữ liệu
+
+<Image src="/images/modbus/2.PNG" width='300' />
+
+-   **Địa chỉ Slave**: địa chỉ của thiết bị ngoại vi. Địa chỉ này được cài đặt trong thiết bị ngoại vi. Ví dụ: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+-   **Thanh ghi**: địa chỉ thanh ghi cần đọc. Địa chỉ này được cài đặt trong thiết bị ngoại vi. Ví dụ: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+-   **Kiểu thanh ghi**: kiểu thanh ghi cần đọc. Có 2 kiểu thanh ghi là Holding Register và Input Register.
+    -   Coils: thanh ghi dạng bit nhị phân có thể đọc/ghi, đại diện cho bit đầu ra.
+    -   Discrete Input: thanh ghi dạng bit nhị phân chỉ có thể đọc, đại diện cho bit đầu vào.
+    -   Holding Register: thanh ghi có thể đọc/ghi được. Dùng để lưu trữ dữ liệu.
+    -   Input Register: thanh ghi chỉ đọc. Dùng để lưu trữ dữ liệu.
+-   **Kiểu dữ liệu**: kiểu dữ liệu cần đọc. Có 2 kiểu dữ liệu là 16 bit và 32 bit.
+    -   On/Off: kiểu dữ liệu 1 bit. Dùng riêng cho thanh ghi bit coils/Discrete Input.
+    -   Interger 16 bit: kiểu dữ liệu 16 bit. Dùng để đọc/ghi dữ liệu số nguyên.
+    -   UnInterger 16 bit: kiểu dữ liệu 16 bit. Dùng để đọc/ghi dữ liệu số nguyên không âm.
+    -   Interger 32 bit: kiểu dữ liệu 32 bit. Dùng để đọc/ghi dữ liệu số nguyên.
+    -   UnInterger 32 bit: kiểu dữ liệu 32 bit. Dùng để đọc/ghi dữ liệu số nguyên không âm.
+    -   Float (32 bit): kiểu dữ liệu 32 bit. Dùng để đọc/ghi dữ liệu số thực.
+
+:::note
+Kiểu dữ liệu 32 bit thường được hiểu là 2 thanh ghi 16 bit ghép lại với nhau. Thanh ghi đầu tiên là thanh ghi thấp (low register) và thanh ghi thứ hai là thanh ghi cao (high register). Khi đọc dữ liệu, công cụ sẽ tự động ghép 2 thanh ghi này lại với nhau để tạo thành 1 thanh ghi 32 bit.
+:::
+
+
+### Module master ghi dữ liệu
+
+<Image src="/images/modbus/3.PNG" width='300' />
+
+-   **Địa chỉ Slave**: địa chỉ của thiết bị ngoại vi. Địa chỉ này được cài đặt trong thiết bị ngoại vi. Ví dụ: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+-   **Thanh ghi**: địa chỉ thanh ghi cần đọc. Địa chỉ này được cài đặt trong thiết bị ngoại vi. Ví dụ: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+-   **Kiểu thanh ghi**: kiểu thanh ghi cần đọc. Có 2 kiểu thanh ghi là Holding Register và Input Register.
+    -   Coils: thanh ghi dạng bit nhị phân có thể đọc/ghi, đại diện cho bit đầu ra.
+    -   Discrete Input: thanh ghi dạng bit nhị phân chỉ có thể đọc, đại diện cho bit đầu vào.
+    -   Holding Register: thanh ghi có thể đọc/ghi được. Dùng để lưu trữ dữ liệu.
+    -   Input Register: thanh ghi chỉ đọc. Dùng để lưu trữ dữ liệu.
+-   **Kiểu dữ liệu**: kiểu dữ liệu cần đọc. Có 2 kiểu dữ liệu là 16 bit và 32 bit.
+    -   On/Off: kiểu dữ liệu 1 bit. Dùng riêng cho thanh ghi bit coils/Discrete Input.
+    -   Interger 16 bit: kiểu dữ liệu 16 bit. Dùng để đọc/ghi dữ liệu số nguyên.
+    -   UnInterger 16 bit: kiểu dữ liệu 16 bit. Dùng để đọc/ghi dữ liệu số nguyên không âm.
+    -   Interger 32 bit: kiểu dữ liệu 32 bit. Dùng để đọc/ghi dữ liệu số nguyên.
+    -   UnInterger 32 bit: kiểu dữ liệu 32 bit. Dùng để đọc/ghi dữ liệu số nguyên không âm.
+    -   Float (32 bit): kiểu dữ liệu 32 bit. Dùng để đọc/ghi dữ liệu số thực.
+
+-   **Dữ liệu gửi**: người dùng có thể nhập dữ liệu thủ công hoặc chọn từ dữ liệu của những công cụ đằng trước.
+
+:::note
+Kiểu dữ liệu 32 bit thường được hiểu là 2 thanh ghi 16 bit ghép lại với nhau. Thanh ghi đầu tiên là thanh ghi thấp (low register) và thanh ghi thứ hai là thanh ghi cao (high register). Khi đọc dữ liệu, công cụ sẽ tự động ghép 2 thanh ghi này lại với nhau để tạo thành 1 thanh ghi 32 bit.
+:::

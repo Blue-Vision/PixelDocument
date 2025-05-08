@@ -28,8 +28,7 @@
       items: [
         'basic/pixel_structure',
         'basic/edit_project',
-        'basic/connect_camera',
-        'basic/first_project',
+        'basic/connect_camera'
       ],
     },
     {
